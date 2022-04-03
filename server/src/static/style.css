@@ -1,0 +1,135 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS";
+}
+body {
+  height: 100vh;
+  background-color: rgb(25, 25, 25);
+}
+.primary {
+  padding: 0.5em 1.5em;
+  background-color: rgb(100, 100, 100);
+  color: #ffff;
+  font-weight: bold;
+  border-radius: 0.2em;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.primary:hover {
+  background-color: rgba(105, 105, 105);
+}
+
+/* Navbar */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+  padding: 0.5em;
+  margin: 0 auto;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+  width: 60%;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  width: 100%;
+  margin: 1em 0;
+}
+.nav ul li a {
+  color: #fff;
+  margin: 0 1em;
+  padding: 0.5em 0;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+.nav ul li a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.active {
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.hs-ctn {
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.hs-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 2em 0;
+  color: #fff;
+}
+
+.hs-name {
+  flex-basis: 50%;
+}
+
+.hs-time {
+  flex-basis: 50%;
+  text-align: end;
+}
+
+.hs-unique {
+  font-style: italic;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin: 0 0 1.5em 0;
+}
+
+.filter input {
+  margin: 0 0 0 0.5em;
+  height: 15px;
+  width: 15px;
+}
+
+.filter #wordLength {
+  margin: 0 0 0 0.5em;
+}
+
+.filter #unique {
+  margin: 0 0 0 1em;
+}
+
+.filter .filter-btn {
+  margin: 0 0 0 1em;
+}
+
+/*  Info Page */
+
+.info-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-text {
+  width: 60%;
+  text-align: center;
+  color: #fff;
+  margin: 1em 0;
+}
+
+.info-text p {
+  margin: 1em 0 0 0;
+}

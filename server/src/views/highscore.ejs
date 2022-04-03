@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Highscore</title>
+  </head>
+  <body>
+    <div class="container">
+      <a href="/" class="title"> Wordle </a>
+      <nav class="nav">
+        <ul>
+          <% menu.forEach((item) => { %>
+          <li>
+            <a
+              href="<%= item.link %>"
+              class="<%- item.active ? 'active' : 'inactive' %>"
+              ><%= item.title %></a
+            >
+          </li>
+          <% }) %>
+        </ul>
+      </nav>
+      <div class="hs-ctn">
+        <form class="filter">
+          <label for="length">Word length:</label>
+          <select name="length" id="wordLength">
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <label for="unique" id="unique">Unique words:</label>
+          <input type="checkbox" name="unique" value="true" />
+          <button class="filter-btn primary">Filter</button>
+        </form>
+        <% highscore.forEach((item) => { %>
+        <div class="hs-info">
+          <h2 class="hs-name"><%= item.name %></h2>
+          <span class="hs-time"><%= item.duration %>s</span>
+          <p class="hs-unique">
+            <%= item.settings.length %>-letter word with <%-
+            item.settings.unique == "true" ? 'unique' : 'not unique' %>
+            characters
+          </p>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+  </body>
+</html>
