@@ -1,0 +1,28 @@
+const data = [
+  "NYSS",
+  "ANKA",
+  "SLUG",
+  "MULE",
+  "DUVA",
+  "GRIS",
+  "SVAN",
+  "KISSA",
+  "ILLER",
+  "PANDA",
+  "SKATA",
+  "HIPPO",
+  "FASAD",
+  "CYKLA",
+  "LEJON",
+  "TORSK",
+  "ZEBRA",
+  "CANARY",
+  "FLAMMA",
+  "BUFFEL",
+  "SNIGEL",
+  "KALKON",
+  "DELFIN",
+  "SARDIN",
+];
+
+export default data;

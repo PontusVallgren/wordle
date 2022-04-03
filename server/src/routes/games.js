@@ -1,7 +1,7 @@
 import express from "express";
-import { randomize } from "../randomize.js";
-import { compare } from "../compare.js";
-import wordsData from "../words_dictionary.js";
+import { randomize } from "../utils/randomize.js";
+import { compare } from "../utils/compare.js";
+import wordsData from "../utils/words_dictionary.js";
 import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();

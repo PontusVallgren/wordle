@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import fetch from "node-fetch";
-import filterHighscore from "../filter.js";
+import filterHighscore from "../utils/filter.js";
 
 const router = express.Router();
 
