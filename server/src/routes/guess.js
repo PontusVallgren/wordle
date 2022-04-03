@@ -1,6 +1,4 @@
 import express from "express";
-import Keyword from "../models/highscore.js";
-import { compare } from "../compare.js";
 
 const router = express.Router();
 

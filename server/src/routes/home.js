@@ -6,7 +6,7 @@ import filterHighscore from "../utils/filter.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.sendFile(path.resolve("./src/frontend/game/build", "index.html"));
+  res.sendFile(path.resolve("../client/build", "index.html"));
 });
 
 router.get("/highscore", async (req, res) => {
