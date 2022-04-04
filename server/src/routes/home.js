@@ -13,7 +13,6 @@ router.get("/highscore", async (req, res) => {
   const response = await fetch("http://localhost:5080/api/highscore");
   const data = await response.json();
   const filterData = filterHighscore(data, req);
-  filterData.sort((a, b) => a.duration - b.duration);
 
   const navbar = [
     {

@@ -20,9 +20,13 @@ app.use("/api/guess", routes.guess);
 app.use(express.static("./src/static"));
 app.use(express.static("../client/build"));
 
-mongoose.connect("mongo").then(async () => {
-  const PORT = process.env.PORT || 5080;
-  app.listen(PORT, () => {
-    console.log(`Our app is running on port ${PORT}`);
+mongoose
+  .connect(
+    "mongodb+srv://Intekaka:wordledb@cluster0.rc35i.mongodb.net/wordle?retryWrites=true&w=majority"
+  )
+  .then(async () => {
+    const PORT = process.env.PORT || 5080;
+    app.listen(PORT, () => {
+      console.log(`Our app is running on port ${PORT}`);
+    });
   });
-});
