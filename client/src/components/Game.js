@@ -61,13 +61,11 @@ const Game = ({ settings }) => {
     setGuesses({
       ...updatedGuesses,
     });
-    console.log(data.correct);
 
     if (data.correct) {
       setGameData(data);
       setGameState("won");
       setTimerOn(!timerOn);
-      console.log(timerOn);
     }
 
     if (data.correct === "lost") {
@@ -103,7 +101,7 @@ const Game = ({ settings }) => {
       </div>
     );
   });
-  console.log(gameData);
+
   if (gameState === "won") {
     const duration =
       (new Date(gameData.result.endTime) -

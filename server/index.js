@@ -15,7 +15,6 @@ app.use("/", routes.home);
 
 app.use("/api/highscore", routes.highscore);
 app.use("/api/games", routes.games);
-app.use("/api/guess", routes.guess);
 
 app.use(express.static("./src/static"));
 app.use(express.static("../client/build"));

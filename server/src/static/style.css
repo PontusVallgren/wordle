@@ -125,9 +125,20 @@ body {
 
 .info-text {
   width: 60%;
-  text-align: center;
   color: #fff;
   margin: 1em 0;
+}
+
+.info-text .sub-title {
+  text-align: center;
+}
+
+.info-text ul {
+  margin: 1em 0 0 0;
+}
+.info-text li {
+  margin: 0 0 0.5em 0;
+  list-style: none;
 }
 
 .info-text p {

@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
   };
 
   Games.push(game);
-  console.log(game);
   res.json({
     gameId: game.gameId,
   });
