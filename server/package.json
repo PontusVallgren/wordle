@@ -3,6 +3,7 @@
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "jest": "^27.5.1",
     "mongoose": "^6.2.9",
     "node-fetch": "^3.2.3",
     "nodemon": "^2.0.15",
@@ -12,12 +13,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node .",
     "dev": "nodemon ."
-    
   },
   "author": "",
   "license": "ISC",
