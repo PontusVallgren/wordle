@@ -118,7 +118,6 @@ const Game = ({ settings }) => {
           <h1>You won!</h1>
           <p>Guesses: {gameData.guesses.length}</p>
           <p>Duration: {Math.floor(duration)}s</p>
-
           <form className='game-form' onSubmit={handleGuess}>
             <input
               className='textInput'
@@ -201,8 +200,8 @@ const Game = ({ settings }) => {
           placeholder='Enter guess'
           value={inputText}
           onChange={onChange}
-          maxlength={settings.wordLength}
-          minlength={settings.wordLength}
+          maxLength={settings.wordLength}
+          minLength={settings.wordLength}
           required
         />
         <button className='guess-btn primary'>GUESS</button>
