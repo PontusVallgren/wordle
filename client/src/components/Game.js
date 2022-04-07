@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import Guess from "./Guess.js";
-import Stopwatch from "./Stopwatch.js";
+import PlayingScreen from "./conditions/PlayingScreen.js";
+import PlayerWon from "./conditions/PlayerWon.js";
+import PlayerLost from "./conditions/PlayerLost.js";
+import EndScreen from "./conditions/EndScreen.js";
 
 const Game = ({ settings }) => {
   const [inputText, setInputText] = useState("");
@@ -42,7 +45,7 @@ const Game = ({ settings }) => {
     return () => clearInterval(interval);
   }, [timerOn]);
 
-  const handleGuess = async (e) => {
+  const handleGuess = async (e, text) => {
     e.preventDefault();
     const res = await fetch(`http://localhost:5080/api/games/guess`, {
       method: "POST",
@@ -50,7 +53,7 @@ const Game = ({ settings }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         gameId: settings.gameId,
-        guess: inputText,
+        guess: text || inputText,
       }),
     });
     const data = await res.json();
@@ -80,7 +83,7 @@ const Game = ({ settings }) => {
     setInputText(value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, text) => {
     e.preventDefault();
     await fetch(`http://localhost:5080/api/highscore`, {
       method: "POST",
@@ -88,7 +91,7 @@ const Game = ({ settings }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         game: gameData,
-        name: inputText,
+        name: text,
       }),
     });
     setGameState("end");
@@ -103,110 +106,32 @@ const Game = ({ settings }) => {
   });
 
   if (gameState === "won") {
-    const duration =
-      (new Date(gameData.result.endTime) -
-        new Date(gameData.result.startTime)) /
-      1000;
     return (
-      <div className='container'>
-        <a href='/' className='title'>
-          Wordle
-        </a>
-        <Stopwatch time={time} />
-        <div className='guess-ctn'>{guessRows}</div>
-        <div className='result-info'>
-          <h1>You won!</h1>
-          <p>Guesses: {gameData.guesses.length}</p>
-          <p>Duration: {Math.floor(duration)}s</p>
-          <form className='game-form' onSubmit={handleGuess}>
-            <input
-              className='textInput'
-              type='text'
-              value={inputText}
-              placeholder='Your name'
-              onChange={onChange}
-            />
-            <button className='submit-hs primary' onClick={handleSubmit}>
-              Enter highscore
-            </button>
-          </form>
-          <a href='/' className='new-game primary'>
-            New Game
-          </a>
-        </div>
-      </div>
+      <PlayerWon
+        time={time}
+        guessRows={guessRows}
+        gameData={gameData}
+        handleGuess={handleGuess}
+        handleSubmit={handleSubmit}
+      />
     );
   }
 
   if (gameState === "lost") {
-    const duration =
-      (new Date(gameData.result.endTime) -
-        new Date(gameData.result.startTime)) /
-      1000;
-    return (
-      <div className='container'>
-        <a href='/' className='title'>
-          Wordle
-        </a>
-        <Stopwatch time={time} />
-        <div className='guess-ctn'>{guessRows}</div>
-        <div className='result-info'>
-          <h1>You lost!</h1>
-          <p>Guesses: {gameData.guesses.length}</p>
-          <p>Duration: {Math.floor(duration)}s</p>
-          <a href='/' className='new-game primary'>
-            New Game
-          </a>
-        </div>
-      </div>
-    );
+    return <PlayerLost time={time} guessRows={guessRows} gameData={gameData} />;
   }
 
   if (gameState === "end") {
-    return (
-      <div className='container'>
-        <a href='/' className='title'>
-          Wordle
-        </a>
-        <Stopwatch time={time} />
-        <div className='guess-ctn'>{guessRows}</div>
-        <div className='result-info'>
-          <h1>You submitted your highscore!</h1>
-          <a
-            href={`/highscore?length=${settings.wordLength}&unique=${settings.unique}`}
-            className='hs-link primary'
-          >
-            Highscores
-          </a>
-          <a href='/' className='new-game primary'>
-            New Game
-          </a>
-        </div>
-      </div>
-    );
+    return <EndScreen time={time} guessRows={guessRows} settings={settings} />;
   }
 
   return (
-    <div className='container'>
-      <a href='/' className='title'>
-        Wordle
-      </a>
-      <Stopwatch time={time} />
-      <div className='guess-ctn'>{guessRows}</div>
-      <form className='game-form' onSubmit={handleGuess}>
-        <input
-          className='textInput'
-          type='text'
-          placeholder='Enter guess'
-          value={inputText}
-          onChange={onChange}
-          maxLength={settings.wordLength}
-          minLength={settings.wordLength}
-          required
-        />
-        <button className='guess-btn primary'>GUESS</button>
-      </form>
-    </div>
+    <PlayingScreen
+      time={time}
+      guessRows={guessRows}
+      settings={settings}
+      handleGuess={handleGuess}
+    />
   );
 };
 
