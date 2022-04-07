@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import routes from "./src/routes/routes.js";
+import routes from "./src/routes/routes";
 
 const app = express();
 app.use(express.json());
@@ -21,7 +21,7 @@ app.use(express.static("../client/build"));
 
 mongoose
   .connect(
-    "mongodb+srv://Intekaka:wordledb@cluster0.rc35i.mongodb.net/wordle?retryWrites=true&w=majority"
+    process.env.DB_URL || "mongodb+srv://Intekaka:wordledb@cluster0.rc35i.mongodb.net/wordle?retryWrites=true&w=majority"
   )
   .then(async () => {
     const PORT = process.env.PORT || 5080;

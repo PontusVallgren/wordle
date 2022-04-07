@@ -1,14 +1,21 @@
 import express from "express";
-import { randomize } from "../utils/randomize.js";
-import { compare } from "../utils/compare.js";
-import wordsData from "../utils/words_dictionary.js";
+import { randomize } from "../utils/randomize";
+import { compare } from "../utils/compare";
+import wordsData from "../utils/words_dictionary";
 import { v4 as uuidv4 } from "uuid";
 
 const router = express.Router();
 
-const Games = [];
+type Req = {
+  query: {
+    length: number
+    unique: boolean
+  }
+}
 
-router.get("/", async (req, res) => {
+const Games: any[] = [];
+
+router.get("/", async (req: Req, res) => {
   const game = {
     gameId: uuidv4(),
     guesses: [],

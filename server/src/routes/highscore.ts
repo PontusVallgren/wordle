@@ -1,5 +1,5 @@
 import express from "express";
-import Highscore from "../models/highscore.js";
+import Highscore from "../models/highscore";
 
 const router = express.Router();
 
@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", (req, res) => {
   const duration =
-    (new Date(req.body.game.result.endTime) -
-      new Date(req.body.game.result.startTime)) /
+    (new Date(req.body.game.result.endTime).valueOf() -
+      new Date(req.body.game.result.startTime).valueOf()) /
     1000;
   const highscore = new Highscore({
     name: req.body.name,

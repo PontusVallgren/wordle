@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const HighscoreSchema = mongoose.Schema({
+const HighscoreSchema = new mongoose.Schema({
   name: { type: String, required: true },
   guesses: { type: Array },
   settings: { type: Object },

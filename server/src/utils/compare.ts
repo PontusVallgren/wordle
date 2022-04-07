@@ -1,11 +1,11 @@
-const compare = (guess, correct) => {
-  guess = Array.from(guess.toUpperCase());
-  correct = Array.from(correct.toUpperCase());
+const compare = (guess: string, correct: string) => {
+  const guessArr = Array.from(guess.toUpperCase());
+  const correctArr = Array.from(correct.toUpperCase());
 
-  const checkCorrect = guess.map((word, index) => {
-    if (word == correct[index]) {
-      correct[index] = " ";
-      guess[index] = " ";
+  const checkCorrect = guessArr.map((word, index) => {
+    if (word == correctArr[index]) {
+      correctArr[index] = " ";
+      guessArr[index] = " ";
       return {
         letter: word,
         result: "correct",
@@ -18,14 +18,14 @@ const compare = (guess, correct) => {
     }
   });
 
-  const result = guess.map((word, index) => {
+  const result = guessArr.map((word, index) => {
     if (word == " ") {
       return {
         letter: checkCorrect[index].letter,
         result: "correct",
       };
-    } else if (correct.includes(word)) {
-      correct[correct.indexOf(word)] = " ";
+    } else if (correctArr.includes(word)) {
+      correctArr[correctArr.indexOf(word)] = " ";
       return {
         letter: word,
         result: "misplaced",
