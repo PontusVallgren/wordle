@@ -15,13 +15,6 @@ type Data = {
   duration: number,
 }
 
-type Req = {
-  query: {
-    length: number,
-    unique: boolean
-  }
-}
-
 
 router.get("/", (req, res) => {
   res.sendFile(path.resolve("../client/build", "index.html"));
@@ -30,15 +23,9 @@ router.get("/", (req, res) => {
 router.get("/highscore", async (req, res) => {
   const response = await fetch("http://localhost:5080/api/highscore");
   const data = await response.json() as Data[];
-
-
-  // Fråga
-/*   const value: unknown = data;
-  const dataChecked: Data[] = value as Data[]; */
-
+  
   const length = parseInt(req.query.length as string)
   const unique = req.query.unique as string == "true"
-
 
   const filterData = filterHighscore(data, length, unique);
 
@@ -57,7 +44,7 @@ router.get("/highscore", async (req, res) => {
     },
   ];
 
-  const menuActive = (path: String) => {
+  const menuActive = (path: string) => {
     const nav = navbar.map((item) => {
       return {
         title: item.title,
