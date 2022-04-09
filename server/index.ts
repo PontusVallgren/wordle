@@ -21,7 +21,7 @@ app.use(express.static("../client/build"));
 
 mongoose
   .connect(
-    process.env.DB_URL || "mongodb+srv://Intekaka:wordledb@cluster0.rc35i.mongodb.net/wordle?retryWrites=true&w=majority"
+    process.env.DB_URL || "asd"
   )
   .then(async () => {
     const PORT = process.env.PORT || 5080;
