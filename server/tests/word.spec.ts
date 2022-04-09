@@ -1,4 +1,4 @@
-import { randomize } from "../src/utils/randomize.js";
+import { randomize } from "../src/utils/randomize";
 
 /* 
 Returns a word that match the required length

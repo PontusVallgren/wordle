@@ -1,4 +1,4 @@
-import { compare } from "../src/utils/compare.js";
+import { compare } from "../src/utils/compare";
 
 /* 
 If a letter is included and on the right index, it should give result: Correct. If a letter is not included at all, it should give result: Incorrect
