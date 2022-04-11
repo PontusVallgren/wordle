@@ -14,7 +14,7 @@
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "ts-node .",
-    "dev": "nodemon --watch src --watch index.ts --exec \"ts-node .\""
+    "dev": "nodemon --watch src --ext ts --exec \"ts-node .\""
   },
   "author": "",
   "license": "ISC",

@@ -3,14 +3,14 @@ type Data = {
   guesses: [],
   settings: {
     length: number,
-    unique: boolean
+    unique: string
   },
   duration: number,
 }
 
-const filterHighscore = (data: Data[], length: number, unique: boolean) => {
+const filterHighscore = (data: Data[], length: number, unique: string) => {
   let filter = [];
-  if (length && unique) {
+  if (length && unique == "true") {
     filter = data
       .filter((item) => item.settings.length == length)
       .filter((item) => item.settings.unique == unique)
@@ -26,7 +26,7 @@ const filterHighscore = (data: Data[], length: number, unique: boolean) => {
     return filter;
   }
 
-  if (unique) {
+  if (unique == "true") {
     filter = data
       .filter((item) => item.settings.unique == unique)
       .sort((a, b) => a.duration - b.duration);

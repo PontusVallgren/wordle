@@ -10,7 +10,7 @@ type Data = {
   guesses: [],
   settings: {
     length: number,
-    unique: boolean
+    unique: string
   },
   duration: number,
 }
@@ -21,11 +21,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/highscore", async (req, res) => {
-  const response = await fetch("http://localhost:5080/api/highscore");
+  const response = await fetch(`http://localhost:5080/api/highscore`);
   const data = await response.json() as Data[];
   
   const length = parseInt(req.query.length as string)
-  const unique = req.query.unique as string == "true"
+  const unique = req.query.unique as string
 
   const filterData = filterHighscore(data, length, unique);
 
